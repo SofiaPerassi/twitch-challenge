@@ -1,0 +1,55 @@
+
+<div class="bg-purple p-4 container flex flex-wrap justify-between items-center mx-auto pr-8 pl-8">
+  <img src="{{'../../../../../assets/twitch (1).png'}}"
+  class="w-20 align-middle justify-start">
+  <form class="justify-center items-center hidden relative md:block">
+    <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+      <svg class="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+      <span class="sr-only">Search icon</span>
+    </div>
+    <input
+      class="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      name="search"
+      ngModel
+      [formControl]="search"
+      placeholder="Search channels"
+      (input)="onChange()"
+    />
+  </form>
+</div>
+
+<h1 *ngIf="channels.length > 0"
+  class="mt-4 ml-4 font-bold text-2xl text-purple text-center">Channels</h1>
+<div class="grid grid-cols-3 mt-4 ml-4">
+  <div *ngFor="let channel of channels; let i = index"
+  class="max-w-sm bg-white rounded-lg border border-purple shadow-md dark:bg-gray-800 dark:border-gray-700 p-4 mt-4 flex-col justify-center content-center hover:shadow-2xl hover:shadow-purple">
+    <h2 class="text-center pb-4 font-bold">{{channel.display_name}}</h2>
+    <h2 class="text-center pb-4 font-bold">Game: {{channel.game_name}}</h2>
+  </div>
+</div>
+
+<div class="m-4">
+  <h1 class="font-bold text-2xl text-purple text-center">Games</h1>
+  <div class="grid grid-cols-3 mt-4">
+    <div *ngFor="let game of games; let i = index"
+    class="max-w-sm bg-white rounded-lg border border-purple shadow-md dark:bg-gray-800 dark:border-gray-700 p-4 mt-4 flex-col justify-center content-center hover:shadow-2xl hover:shadow-purple">
+      <h2 class="text-center pb-4 font-bold">{{game.name}}</h2>
+      <img src={{game.box_art_url}} alt=""
+      class="object-center">
+    </div>
+  </div>
+</div>
+
+<div class="m-4">
+  <h1 class="font-bold text-2xl text-purple text-center">Streams</h1>
+  <div class="grid grid-cols-3 mt-4">
+    <div *ngFor="let stream of streams; let i = index"
+    class="max-w-sm bg-white rounded-lg border border-purple shadow-md dark:bg-gray-800 dark:border-gray-700 p-4 mt-4 flex-col justify-center content-center hover:shadow-2xl hover:shadow-purple">
+      <img src="" alt="">
+      <img src="{{'../../../../../assets/twitch.png'}}"
+      class="w-20 flex justify-center">
+      <h2 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white content-center">User: {{stream.user_name}}</h2>
+      <h2 class="mb-3 text-gray-700 dark:text-gray-400 font-bold">Game: {{stream.game_name}}</h2>
+    </div>
+  </div>
+</div>
